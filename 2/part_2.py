@@ -9,8 +9,6 @@ win_conditions = {
 
 lose_conditions = {value: key for key, value in win_conditions.items()}
 
-print(lose_conditions)
-
 scores = {
     "A": 1,
     "B": 2,
@@ -29,6 +27,5 @@ for game in data:
     else:
         me = lose_conditions[them]
     my_score += scores[me]
-
 
 print(my_score)

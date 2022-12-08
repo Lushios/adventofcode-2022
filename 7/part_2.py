@@ -1,5 +1,3 @@
-from math import inf
-
 TOTAL_SIZE = 70000000
 NECESSARY_SPACE = 30000000
 

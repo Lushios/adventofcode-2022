@@ -1,3 +1,6 @@
+LEAST_COMMON_MULTIPLE = 9699690
+
+
 class Monkey:
     def __init__(self, text_monkey):
         monkey_parameters = text_monkey.split("\n")
@@ -25,7 +28,7 @@ class Monkey:
 
     def inspect_item(self):
         self.items[0] = self.operation(self.items[0])
-        self.items[0] = self.items[0] // 3
+        self.items[0] = self.items[0] % LEAST_COMMON_MULTIPLE
         self.items_inspected += 1
 
     def throw_item(self):
@@ -41,7 +44,7 @@ class MonkeysPack:
         self.monkeys = monkeys
 
     def run_game(self, rounds_count):
-        for _ in range(0, rounds_count):
+        for i in range(0, rounds_count):
             self.run_round()
         return [monkey.items_inspected for monkey in self.monkeys]
 
@@ -53,6 +56,7 @@ class MonkeysPack:
         while monkey.hands_are_not_empty is True:
             monkey.inspect_item()
             target, item = monkey.throw_item()
+            print(monkey.items)
             self.monkeys[target].catch_item(item)
 
 
@@ -66,6 +70,6 @@ for monkey_block in monkey_blocks:
 
 monkeys_pack = MonkeysPack(monkeys)
 
-monkey_points = monkeys_pack.run_game(20)
+monkey_points = monkeys_pack.run_game(10000)
 monkey_points = sorted(monkey_points)
 print(monkey_points[-1] * monkey_points[-2])
